@@ -1131,7 +1131,7 @@ function toggleRecord() {
   const led  = document.getElementById('rp-led');
   const cta  = document.getElementById('rp-cta');
   if (!playing) {
-    if (!audio) { audio = new Audio('/Vaaroon.mp3'); audio.loop = true; audio.volume = 0.6; }
+    if (!audio) { audio = new Audio('vaaroon.mp3'); audio.loop = true; audio.volume = 0.6; }
     audio.play().catch(()=>{});
     disc.classList.add('spinning'); arm.classList.add('on');
     led.classList.add('on'); cta.textContent = 'Now playing…'; cta.classList.add('on');
