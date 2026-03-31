@@ -211,17 +211,19 @@ nav.scrolled {
   opacity: 1;
 }
 .record-player {
-  width: min(300px, 90%);
-  height: min(300px, 90%);
-  background: #1c1c1c;
-  border-radius: 20px;
+  width: min(280px, 80%);
+  aspect-ratio: 1;
+  height: auto;
+  background: #232323;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.1);
   position: relative;
   cursor: pointer;
+  overflow: visible;
   box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.06),
-    inset 0 -2px 4px rgba(0,0,0,0.4),
-    0 24px 60px rgba(0,0,0,0.85),
-    0 0 0 1px rgba(255,255,255,0.07);
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 8px 32px rgba(0,0,0,0.6),
+    0 2px 8px rgba(0,0,0,0.4);
   user-select: none;
   flex-shrink: 0;
   transition: transform 0.2s;
@@ -231,7 +233,7 @@ nav.scrolled {
 /* Vinyl disc */
 .record-disc {
   position: absolute;
-  width: 214px; height: 214px;
+  width: 72%; height: 72%;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -250,55 +252,56 @@ nav.scrolled {
 /* Gold center label */
 .record-label {
   position: absolute;
-  width: 64px; height: 64px;
+  width: 22%; height: 22%;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(circle at 38% 32%, #e2b84a, #9a7218);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.55rem; font-style: italic;
+  font-size: clamp(0.4rem, 1.2vw, 0.6rem); font-style: italic;
   color: rgba(0,0,0,0.7); letter-spacing: 0.05em;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.5);
 }
 
-/* Tonearm pivot knob */
+/* Tonearm pivot — top-right of box */
 .tonearm-pivot {
   position: absolute;
-  top: -72px; right: 55px;
-  width: 18px; height: 18px;
+  top: 8%; right: 8%;
+  width: 6%; height: 6%;
+  min-width: 12px; min-height: 12px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #aaa, #444);
+  background: radial-gradient(circle at 35% 35%, #bbb, #555);
   box-shadow: 0 2px 6px rgba(0,0,0,0.7);
   z-index: 3;
 }
 
-/* Tonearm */
+/* Tonearm — resting: angled away (right); playing: swings left onto disc */
 .tonearm {
   position: absolute;
-  top: -70px; right: 60px;
-  width: 2px; height: 130px;
-  background: linear-gradient(to bottom, #999, #555);
+  top: 10%; right: 9.5%;
+  width: 2px; height: 38%;
+  background: linear-gradient(to bottom, #bbb, #777);
   transform-origin: top center;
-  transform: rotate(28deg);
+  transform: rotate(-42deg);
   border-radius: 2px;
   transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
-.tonearm.on { 
-  transform: rotate(16deg); }
+.tonearm.on { transform: rotate(32deg); }
 .tonearm-head {
-  position: absolute; bottom: -6px; left: 50%;
+  position: absolute; bottom: -5px; left: 50%;
   transform: translateX(-50%);
-  width: 8px; height: 6px;
-  background: #999; border-radius: 1px;
+  width: 7px; height: 5px;
+  background: #aaa; border-radius: 1px;
 }
 
 /* Red LED */
 .rec-led {
   position: absolute;
-  bottom: 44px; left: 48px;
-  width: 11px; height: 11px;
+  bottom: 15%; left: 14%;
+  width: 4%; height: 4%;
+  min-width: 9px; min-height: 9px;
   border-radius: 50%;
   background: #8b1c1c;
   box-shadow: 0 0 4px rgba(180,0,0,0.5);
@@ -314,8 +317,8 @@ nav.scrolled {
 /* Click to play text */
 .rec-cta {
   position: absolute;
-  bottom: 46px; left: 70px;
-  font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase;
+  bottom: 16%; left: 22%;
+  font-size: 0.44rem; letter-spacing: 0.22em; text-transform: uppercase;
   color: rgba(197,160,89,0.5); transition: color 0.3s;
   white-space: nowrap;
 }
@@ -595,7 +598,7 @@ nav.scrolled {
 
 /* Light switch */
 .light-switch-wrap {
-  position: absolute; right: 2rem; top: 60px;
+  position: absolute; right: 2rem; top: 3.2rem;
   display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
   cursor: pointer; z-index: 2;
 }
@@ -660,22 +663,6 @@ nav.scrolled {
   font-size: 0.95rem; font-style: italic;
   color: #5a4a32; text-align: center;
   margin-top: 0.75rem; letter-spacing: 0.03em;
-}
-
-/* Attending toggle */
-.attend-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 10px; overflow: hidden; border: 0.5px solid rgba(255,255,255,0.1); }
-.attend-radio { display: none; }
-.attend-label {
-  display: block; text-align: center; padding: 0.9rem;
-  font-size: 0.78rem; color: rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.04);
-  cursor: pointer; transition: all 0.3s;
-  border-right: 0.5px solid rgba(255,255,255,0.08);
-}
-.attend-label:last-of-type { border-right: none; }
-.attend-radio:checked + .attend-label {
-  background: rgba(255,255,255,0.08);
-  color: var(--cream);
 }
 
 /* ════════════════════════════════
@@ -839,9 +826,9 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
   <div class="hero-grid">
     <!-- LEFT -->
     <div class="hero-left">
-      <p class="hero-tag">With the heavenly blessings of Sh. Jagdish Prasad Aggarwal,</p>
-      <p><span class="hero-amp-gm">Smt. Geeta Aggarwal</span> invites you to the wedding of their grandson</p>
-      <div class="hero-names">Mayank <span class="hero-amp">&amp;</span> Falki</div>
+    <p class="hero-tag">With the heavenly blessings of Sh. Jagdish Prasad Aggarwal,</p>
+    <p><span class="hero-amp-gm">Smt. Geeta Aggarwal</span> invites you to the wedding of their grandson</p>
+    <div class="hero-names">Mayank <span class="hero-amp">&amp;</span> Falki</div>
       <div class="hero-dates">
         <div class="hero-date-item">
           <div class="hero-date-line"></div>
@@ -951,7 +938,7 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
 <!-- ══ COUNTDOWN ══ -->
 <section id="countdown">
   <span class="section-label">Counting the moments</span>
-  <div class="section-title">Until We <em style="color:var(--gold)">Tie The Knot</em></div>
+  <div class="section-title">Until We Say <em style="color:var(--gold)">I Do</em></div>
   <div class="countdown-grid">
     <div class="cd-box"><span class="cd-num" id="cd-days">000</span><span class="cd-label">Days</span></div>
     <div class="cd-box"><span class="cd-num" id="cd-hrs">00</span><span class="cd-label">Hours</span></div>
@@ -997,25 +984,25 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
 
   <div class="polaroid-track-wrap">
     <div class="polaroid-track" id="polaroid-track">
-      <!-- Set 1 -->
-      <div class="polaroid"><div class="polaroid-img"><img src="G1.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G2.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🏰</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G3.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">💐</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G4.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌙</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G5.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌅</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G6.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">☕</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G7.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🎵</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G8.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="polaroid"><div class="polaroid-img"><img src="G1.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G2.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🏰</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G3.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">💐</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G4.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌙</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G5.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌅</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G6.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">☕</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G7.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🎵</div></div>
-      <div class="polaroid"><div class="polaroid-img"><img src="G8.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
-    </div>
+    <!-- Set 1 -->
+    <div class="polaroid"><div class="polaroid-img"><img src="G1.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G2.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🏰</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G3.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">💐</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G4.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌙</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G5.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌅</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G6.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">☕</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G7.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🎵</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G8.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <div class="polaroid"><div class="polaroid-img"><img src="G1.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G2.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🏰</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G3.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">💐</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G4.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌙</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G5.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🌅</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G6.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">☕</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G7.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap">🎵</div></div>
+    <div class="polaroid"><div class="polaroid-img"><img src="G8.jpg" alt="Mayank & Falki"/></div><div class="polaroid-cap"></div>🌸</div>
+  </div>
   </div>
 </section>
 
@@ -1049,7 +1036,7 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
   <div class="section-title">The Venues</div>
   <div class="venue-grid">
     <div>
-      <div class="venue-name">Venues</div>
+      <div class="venue-name">Jammu Celebrations</div>
       <p style="font-size:0.78rem;color:var(--muted);line-height:1.8;margin-top:0.4rem;">
         Two beautiful evenings across two iconic venues in the heart of Jammu.
       </p>
