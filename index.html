@@ -677,6 +677,10 @@ nav.scrolled {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 2rem; max-width: 860px; margin: 3rem auto 0;
 }
+.families-grid-rsvp {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10rem; max-width: 860px; margin: 3rem auto 0;
+}
 .family-side { text-align: center; }
 .family-role {
   font-size: 0.52rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -685,6 +689,11 @@ nav.scrolled {
 .family-who {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem; font-style: italic; font-weight: 300;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.family-who-rsvp {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-style: italic; font-weight: 300;
   color: var(--cream); margin-bottom: 1rem;
 }
 .family-parents-card {
@@ -776,6 +785,7 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
   .couple-divider { display: none; }
   .couple-side { padding: 2rem 1rem; }
   .families-grid { grid-template-columns: 1fr; }
+  .families-grid-rsvp { grid-template-columns: 1fr; gap: 3rem}
   .venue-grid { grid-template-columns: 1fr; }
   .savedate-card { padding: 2.5rem 2rem; }
   .countdown-grid { grid-template-columns: repeat(2,1fr); }
@@ -800,6 +810,7 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
     <li><a href="#events">Events</a></li>
     <li><a href="#countdown">Countdown</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
     <li><a href="#venue">Venue</a></li>
   </ul>
 </nav>
@@ -1027,6 +1038,36 @@ footer p { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted); marg
     </div>
   </div>
   <p class="families-quote">"Your presence is the greatest gift we could ask for. We look forward to seeing you there."</p>
+</section>
+
+<!-- ══ RSVP ══ -->
+<section id="rsvp">
+  <div class="section-title">RSVP</div>
+  <div class="gold-line"></div>
+  <div class="families-grid-rsvp">
+    <div class="family-side">
+      <span class="family-role">Groom's Parents</span>
+      <div class="family-who-rsvp">Shri Shambhu Aggarwal</div>
+      <div class="family-who-rsvp">Smt. Shikha Aggarwal</div>
+      <div class="family-parents-card">
+        9419135048, 9797389555, 7006594169
+      </div>
+    </div>
+    <div class="family-side">
+      <span class="family-role">Compliments From</span>
+      <div class="family-who-rsvp">Minal &amp; Manoj Mittal</div>
+      <div class="family-who-rsvp">Sangeeta &amp; Mridul Mittal</div>
+      <div class="family-who-rsvp">Mahi &amp; Manthan Mittal</div>
+      <div class="family-who-rsvp">Meenal &amp; Uday Aggarwal</div>
+    </div>
+    <div class="family-side">
+      <span class="family-role">Family Flowers</span>
+      <div class="family-who-rsvp">Veda</div>
+      <div class="family-who-rsvp">Ira</div>
+      <div class="family-who-rsvp">Madhur</div>
+      <div class="family-who-rsvp">Tashu</div>
+    </div>
+  </div>
 </section>
 
 <!-- ══ VENUE ══ -->
